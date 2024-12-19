@@ -1,0 +1,17 @@
+<%= turbo_frame_tag physician do %>
+  <div class="physician">
+  <%= link_to physician.name,
+                    physician_path(physician),
+                    data: { turbo_frame: "_top" } %>
+    <div class="physician__actions">
+      <%= button_to "Delete",
+                    physician_path(physician),
+                    method: :delete,
+                    form: { data: { turbo_confirm: "Are you sure?" } },
+                    class: "btn btn--light" %>
+      <%= link_to "Edit",
+                    edit_physician_path(physician),
+                    class: "btn btn--light" %>
+    </div>
+  </div>
+<% end %>

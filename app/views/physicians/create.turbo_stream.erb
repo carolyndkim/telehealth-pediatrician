@@ -1,0 +1,3 @@
+<%= turbo_stream.append "physicians", partial: "physicians/physician", locals: { physician: @physician } %>
+<%= turbo_stream.update Physician.new, "" %>
+<%= render_turbo_stream_flash_messages %>

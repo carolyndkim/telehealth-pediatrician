@@ -1,0 +1,11 @@
+<main class="container">
+  <%= link_to sanitize("&larr; Back to physician"), physician_path(@physician) %>
+
+  <div class="header">
+    <h1>Edit physician</h1>
+  </div>
+
+  <%= turbo_frame_tag @physician do %>
+    <%= render "form", physician: @physician %>
+  <% end %>
+</main>

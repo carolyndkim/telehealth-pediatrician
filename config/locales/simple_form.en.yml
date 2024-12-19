@@ -19,8 +19,12 @@ en:
       visit:
         name: Name of child
         symptoms: Describe the symptoms
+      parent:
+        name: Name of physician
     labels:
       parent:
+        name: Name
+      physician:
         name: Name
       child:
         name: Name

@@ -16,4 +16,6 @@ Rails.application.routes.draw do
     resources :children, except: [:index, :show]
     resources :visits, except: [:index, :show]
   end
+
+  resources :physicians
 end

@@ -1,0 +1,15 @@
+<main class="container">
+    <div class="header">
+      <h1>Physicians</h1>
+      <%= link_to "New physician",
+                  new_physician_path,
+                  data: { turbo_frame: dom_id(Physician.new) },
+                  class: "btn btn--primary" %>
+    </div>
+
+  <%= turbo_frame_tag Physician.new %>
+
+  <%= turbo_frame_tag "physicians" do %>
+    <%= render @physicians %>
+  <% end %>
+</main>
