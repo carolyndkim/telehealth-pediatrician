@@ -1,0 +1,11 @@
+<main class="container">
+  <%= link_to sanitize("&larr; Back to parents"), parents_path %>
+
+  <div class="header">
+    <h1>New parent</h1>
+  </div>
+
+  <%= turbo_frame_tag @parent do %>
+    <%= render "form", parent: @parent %>
+  <% end %>
+</main>

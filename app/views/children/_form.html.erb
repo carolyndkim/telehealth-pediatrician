@@ -1,0 +1,9 @@
+<%= simple_form_for [parent, child], html: { class: "form child" } do |f| %>
+    <%= form_error_notification(child) %>
+
+
+    <%= f.input :name, input_html: { autofocus: true } %>
+    <%= f.input :date_of_birth, html5: true, input_html: { autofocus: true } %>
+    <%= link_to "Cancel", parent_path(parent), class: "btn btn--light" %>
+    <%= f.submit class: "btn btn--secondary" %>
+  <% end %>

@@ -1,0 +1,6 @@
+<%= turbo_stream.replace @visit do %>
+    <%= render @visit, parent: @parent, child: @child %>
+<% end %>
+
+<%= render_turbo_stream_flash_messages %>
+

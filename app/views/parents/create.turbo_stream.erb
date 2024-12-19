@@ -1,0 +1,3 @@
+<%= turbo_stream.append "parents", partial: "parents/parent", locals: { parent: @parent } %>
+<%= turbo_stream.update Parent.new, "" %>
+<%= render_turbo_stream_flash_messages %>

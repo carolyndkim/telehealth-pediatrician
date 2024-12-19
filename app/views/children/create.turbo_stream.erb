@@ -1,0 +1,15 @@
+<%# remove the form from the Parents#index page %>
+<%= turbo_stream.update Child.new, "" %>
+
+<%# add the date at the right place %>
+<% if previous_child = @child.previous_child %>
+  <%= turbo_stream.after previous_child do %>
+    <%= render @child, parent: @parent %>
+  <% end %>
+<% else %>
+  <%= turbo_stream.prepend "children" do %>
+    <%= render @child, parent: @parent %>
+  <% end %>
+<% end %>
+
+<%= render_turbo_stream_flash_messages %>

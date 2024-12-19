@@ -1,0 +1,7 @@
+<%= simple_form_for parent, html: { class: "parent form" } do |f| %>
+    <%= form_error_notification(parent) %>
+  
+    <%= f.input :name, input_html: { autofocus: true } %>
+    <%= link_to "Cancel", parents_path, class: "btn btn--light" %>
+    <%= f.submit class: "btn btn--secondary" %>
+  <% end %>

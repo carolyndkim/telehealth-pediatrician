@@ -1,0 +1,14 @@
+<%= simple_form_for [parent, child, visit],
+                    html: { class: "form visit visit--form" } do |f| %>
+
+  <%= form_error_notification(visit) %>
+
+  <%= f.input :symptoms,
+              wrapper_html: { class: "visit__symptoms" },
+              input_html: { autofocus: true } %>
+
+  <div class="visit__actions">
+    <%= link_to "Cancel", parent_path(parent), class: "btn btn--light" %>
+    <%= f.submit class: "btn btn--secondary" %>
+  </div>
+<% end %>

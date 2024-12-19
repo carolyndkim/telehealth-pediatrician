@@ -1,0 +1,10 @@
+<div class="empty-state empty-state--only-child">
+  <p class="empty-state__text">
+    There is no parent user yet!
+  </p>
+
+  <%= link_to "Add parent",
+              new_parent_path,
+              class: "btn btn--primary",
+              data: { turbo_frame: dom_id(Parent.new) } %>
+</div>

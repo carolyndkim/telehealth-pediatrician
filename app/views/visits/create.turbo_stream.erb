@@ -1,0 +1,13 @@
+<%# empty the Turbo Frame containing the form %>
+<%= turbo_stream.update nested_dom_id(@child, Visit.new), "" %>
+
+<%# prepend the created line item to the list %>
+<%= turbo_stream.prepend nested_dom_id(@child, "visits") do %>
+  <%= render @visit, parent: @parent, child: @child %>
+<% end %>
+
+<%= render_turbo_stream_flash_messages %>
+
+<%= turbo_stream.update dom_id(@parent, :total) do %>
+    <%= render "parents/total", parent: @parent %>
+<% end %>

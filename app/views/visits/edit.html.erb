@@ -1,0 +1,14 @@
+<main class="container">
+  <%= link_to sanitize("&larr; Back to parent"), parent_path(@parent) %>
+
+  <div class="header">
+    <h1>Edit visit request for <%= @child.name %></h1>
+  </div>
+
+  <%= turbo_frame_tag @visit do %>
+    <%= render "form",
+              parent: @parent,
+              child: @child,
+              visit: @visit %>
+  <% end %>
+</main>

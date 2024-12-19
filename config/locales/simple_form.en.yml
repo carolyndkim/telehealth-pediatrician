@@ -1,0 +1,43 @@
+en:
+  simple_form:
+    "yes": 'Yes'
+    "no": 'No'
+    required:
+      text: 'required'
+      mark: '*'
+      # You can uncomment the line below if you need to overwrite the whole required html.
+      # When using html, text and mark won't be used.
+      # html: '<abbr title="required">*</abbr>'
+    error_notification:
+      default_message: "Please review the problems below:"
+    placeholders:
+      parent:
+        name: Name of parent
+      child:
+        name: Name of child
+        date: Date of birth
+      visit:
+        symptoms: Describe the symptoms
+    labels:
+      parent:
+        name: Name
+      child:
+        name: Name
+        date: Date
+      line_item:
+        created: Created At
+        symptoms: Symptoms
+        visited: Visited At
+        physician: Physican Name
+
+  helpers:
+    submit:
+      parent:
+        create: Create parent
+        update: Update parent
+      child:
+        create: Create child
+        update: Update child
+      visit:
+        create: Request a visit
+        update: Update symptoms

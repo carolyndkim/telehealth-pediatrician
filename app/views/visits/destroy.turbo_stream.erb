@@ -1,0 +1,6 @@
+<%= turbo_stream.remove @visit %>
+<%= render_turbo_stream_flash_messages %>
+
+<%= turbo_stream.update dom_id(@parent, :total) do %>
+    <%= render "parents/total", parent: @parent %>
+<% end %>

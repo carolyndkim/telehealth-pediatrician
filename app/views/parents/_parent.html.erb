@@ -1,0 +1,17 @@
+<%= turbo_frame_tag parent do %>
+  <div class="parent">
+  <%= link_to parent.name,
+                    parent_path(parent),
+                    data: { turbo_frame: "_top" } %>
+    <div class="parent__actions">
+      <%= button_to "Delete",
+                    parent_path(parent),
+                    method: :delete,
+                    form: { data: { turbo_confirm: "Are you sure?" } },
+                    class: "btn btn--light" %>
+      <%= link_to "Edit",
+                    edit_parent_path(parent),
+                    class: "btn btn--light" %>
+    </div>
+  </div>
+<% end %>
