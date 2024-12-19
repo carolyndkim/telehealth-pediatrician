@@ -1,10 +1,13 @@
 <%= turbo_frame_tag visit do %>
   <div class="visit">
-    <div class="visit__created">
-      <%= visit.created_at %>
+    <div class="visit__name">
+      <%= visit.child.name %>
       <div class="visit__symptoms">
         <%= simple_format visit.symptoms %>
       </div>
+    </div>
+    <div class="visit__created">
+      <%= visit.created_at || 'Waiting' %>
     </div>
     <div class="visit__visited">
       <%= visit.visited_at || 'Waiting' %>
@@ -14,12 +17,12 @@
     </div>
     <div class="visit__actions">
       <%= button_to "Cancel",
-                    [parent, child, visit],
+                    [parent, visit],
                     method: :delete,
                     form: { data: { turbo_confirm: "Are you sure?" } },
                     class: "btn btn--light" %>
       <%= link_to "Edit",
-                  [:edit, parent, child, visit],
+                  [:edit, parent, visit],
                   class: "btn btn--light" %>
     </div>
   </div>

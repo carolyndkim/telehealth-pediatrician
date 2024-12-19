@@ -15,6 +15,32 @@
   <%= turbo_frame_tag "children" do %>
     <%= render @children, parent: @parent %>
   <% end %>
+
+  <div class="parent__visit-body">
+    <h2>
+      Visits
+    </h2>
+      <div class="visit visit--header">
+        <div class="visit__name">Child Name</div>
+        <div class="visit__created">Created</div>
+        <div class="visit__visited">Visited</div>
+        <div class="visit__physician">Physician</div>
+        <div class="visit__actions"></div>
+      </div>
+
+      <%= turbo_frame_tag nested_dom_id(@parent, "visits") do %>
+        <%= render @parent.visits.ordered, parent: @parent %>
+      <% end %>
+      
+      <%= turbo_frame_tag nested_dom_id(@parent, Visit.new) %>
+
+      <div class="parent__visit-footer">
+        <%= link_to "Add visit",
+                    [:new, @parent, :visit],
+                    data: { turbo_frame: nested_dom_id(@parent, Visit.new) },
+                    class: "btn btn--primary" %>
+      </div>
+    </div>
 </main>
 
 <%= turbo_frame_tag dom_id(@parent, :total) do %>

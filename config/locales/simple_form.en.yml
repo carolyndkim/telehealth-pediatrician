@@ -17,6 +17,7 @@ en:
         name: Name of child
         date: Date of birth
       visit:
+        name: Name of child
         symptoms: Describe the symptoms
     labels:
       parent:

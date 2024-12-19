@@ -1,16 +1,15 @@
 class VisitsController < ApplicationController
     before_action :set_parent
-    before_action :set_child
     before_action :set_visit, only: [:edit, :update, :destroy]
 
   
     def new
-      @visit = @child.visits.build
+      @visit = @parent.visits.build
     end
   
     def create
-      @visit = @child.visits.build(visit_params)
-      @visit.parent = @parent
+      @visit = @parent.visits.build(visit_params)
+      @visit.child = @parent.children.find_by_name(child_name)
   
       if @visit.save
         respond_to do |format|
@@ -26,6 +25,8 @@ class VisitsController < ApplicationController
     end
   
     def update
+      @visit.child = @parent.children.find_by_name(child_name)
+
       if @visit.update(visit_params)
         respond_to do |format|
           format.html { redirect_to parent_path(@parent), notice: "Visit request was successfully updated." }
@@ -50,16 +51,16 @@ class VisitsController < ApplicationController
     def visit_params
       params.require(:visit).permit(:symptoms)
     end
+
+    def child_name
+      params.require(:visit).permit(:child)['child']
+    end
   
     def set_parent
       @parent = Parent.find(params[:parent_id])
     end
-  
-    def set_child
-      @child = @parent.children.find(params[:child_id])
-    end
 
     def set_visit
-        @visit = @child.visits.find(params[:id])
+        @visit = @parent.visits.find(params[:id])
     end
   end

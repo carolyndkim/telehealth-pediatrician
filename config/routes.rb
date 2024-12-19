@@ -13,8 +13,7 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   resources :parents do
-    resources :children, except: [:index, :show] do
-      resources :visits, except: [:index, :show]
-    end
+    resources :children, except: [:index, :show]
+    resources :visits, except: [:index, :show]
   end
 end

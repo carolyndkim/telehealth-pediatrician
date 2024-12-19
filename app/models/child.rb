@@ -3,7 +3,7 @@ class Child < ApplicationRecord
     validates :date_of_birth, presence: true
 
     belongs_to :parent
-    has_many :visits, foreign_key: :children_id, dependent: :delete_all
+    has_many :visits, dependent: :delete_all
 
     scope :ordered, -> { order(:date_of_birth) }
 

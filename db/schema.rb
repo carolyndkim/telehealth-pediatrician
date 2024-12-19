@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_12_16_044114) do
+ActiveRecord::Schema[8.0].define(version: 2024_12_19_201334) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -40,15 +40,15 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_16_044114) do
     t.datetime "visited_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "children_id"
+    t.bigint "child_id"
     t.bigint "physician_id"
     t.string "parent_id"
     t.string "symptoms"
-    t.index ["children_id"], name: "index_visits_on_children_id"
+    t.index ["child_id"], name: "index_visits_on_child_id"
     t.index ["physician_id"], name: "index_visits_on_physician_id"
   end
 
   add_foreign_key "children", "parents"
-  add_foreign_key "visits", "children", column: "children_id"
+  add_foreign_key "visits", "children"
   add_foreign_key "visits", "physicians"
 end
