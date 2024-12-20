@@ -12,10 +12,17 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
 
+  root "welcome#index"
+  
   resources :parents do
     resources :children, except: [:index, :show]
     resources :visits, except: [:index, :show]
   end
 
   resources :physicians
+  resources :visits do
+    get :assign, on: :member
+    patch :assign_doctor, on: :member
+    patch :finish, on: :member
+  end
 end

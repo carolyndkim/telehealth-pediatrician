@@ -1,0 +1,23 @@
+<main class="container">
+    <div class="header">
+        <h1>Welcome</h1>
+    </div>
+
+    <div class="main"> 
+        <h2><%= link_to "Parents", parents_path %></h2>
+    </div>
+
+    <div class="main"> 
+        <h2><%= link_to "Visits", visits_path %></h2>
+    </div>
+
+    <div class="main"> 
+        <h2><%= link_to "Physicians", physicians_path %></h2>
+    </div>
+</main>
+
+<%= turbo_frame_tag "waiting-visits-total" do %>
+  <%= render "visits/total" %>
+<% end %>
+
+

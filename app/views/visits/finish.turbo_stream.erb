@@ -1,0 +1,21 @@
+<%= turbo_stream.replace dom_id(@visit, "finish") do %>
+    <%= turbo_frame_tag dom_id(@visit, "finish") do %>
+       <div class="visit">
+          <div class="visit__name">
+            <%= @visit.parent_child_names %>
+            <div class="visit__symptoms">
+              <%= @visit.symptoms %>
+            </div>
+          </div>
+          <div class="visit__created">
+            <%= @visit.created_at %>
+          </div>
+          <div class="visit__visited">
+            <%= @visit.visited_at || 'Waiting' %>
+          </div>
+          <div class="visit__actions">
+          </div>
+        </div>
+    <% end %>
+<% end %>
+<%= render_turbo_stream_flash_messages %>

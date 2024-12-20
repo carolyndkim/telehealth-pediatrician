@@ -1,5 +1,5 @@
 <main class="container">
-  <%= link_to sanitize("&larr; Back to physician"), physicians_path %>
+  <%= link_to sanitize("&larr; Back to physicians"), physicians_path %>
   <div class="header">
     <h1>
       <%= @physician.name %>
@@ -14,23 +14,34 @@
       <div class="visit__name">Parent and Child Names</div>
       <div class="visit__created">Created</div>
       <div class="visit__visited">Visited</div>
+      <div class="visit__actions"></div>
     </div>
 
     <% @physician.visits.ordered.each do |visit| %>
-      <div class="visit">
-        <div class="visit__name">
-          <%= visit.parent_child_names %>
-          <div class="visit__symptoms">
-            <%= visit.symptoms %>
+      <%= turbo_frame_tag dom_id(visit, "finish") do %>
+        <div class="visit">
+          <div class="visit__name">
+            <%= visit.parent_child_names %>
+            <div class="visit__symptoms">
+              <%= visit.symptoms %>
+            </div>
+          </div>
+          <div class="visit__created">
+            <%= visit.created_at %>
+          </div>
+          <div class="visit__visited">
+            <%= visit.visited_at || 'Waiting' %>
+          </div>
+          <div class="visit__actions">
+            <% if not visit.visited %>
+                <%= button_to "Finish",
+                            [:finish, visit],
+                            form: { data: { turbo_confirm: "Are you sure?" } },
+                            class: "btn btn--secondary" %>
+            <% end %>
           </div>
         </div>
-        <div class="visit__created">
-          <%= visit.created_at %>
-        </div>
-        <div class="visit__visited">
-          <%= visit.visited_at || 'Waiting' %>
-        </div>
-      </div>
+      <% end %>
     <% end %>
   </div>
 </main>

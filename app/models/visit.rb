@@ -14,4 +14,8 @@ class Visit < ApplicationRecord
         parent.name + " - " + child.name
     end
 
+    def finish_visiting
+        update!(visited: true, visited_at: DateTime.now)
+    end
+
 end

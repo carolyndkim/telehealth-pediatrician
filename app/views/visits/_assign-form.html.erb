@@ -1,0 +1,27 @@
+<%= simple_form_for visit, :url=>assign_doctor_visit_path,
+                    html: { class: "form visit visit--form" } do |f| %>
+
+  <%= form_error_notification(visit) %>
+
+  <div class="visit__name">
+      <%= visit.parent_child_names %>
+      <div class="visit__symptoms">
+          <%= visit.symptoms %>
+      </div>
+  </div>
+  <div class="visit__created">
+      <%= visit.created_at %>
+  </div>
+  <div class="visit__visited">
+      <%= visit.visited_at || 'Waiting' %>
+  </div>
+
+  <%= f.select :physician, options_for_select(Physician.ordered.pluck(:name), @visit.physician&.name),
+              wrapper_html: { class: "visit__name" },
+              input_html: { autofocus: true } %>
+
+  <div class="visit__actions">
+    <%= link_to "Cancel", visits_path, class: "btn btn--light" %>
+    <%= f.button :submit, "Assign", class: "btn btn--secondary" %>
+  </div>
+<% end %>
