@@ -1,24 +1,44 @@
-# README
+# Telehealth Pediatrician
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This app is a very simple mockup of a pediatrician practice focused on teleheatlh. This was built following the [Turbo Rails Tutorial](https://www.hotrails.dev/turbo-rails) and then expanded to include additional functionalities. 
 
-Things you may want to cover:
+## Setup
+```
+# clone this app
+git clone git@github.com:carolyndkim/telehealth-pediatrician.git
 
-* Ruby version
+# precompile assets
+rake assets:precompile
 
-* System dependencies
+# build the rails server
+bundle exec rails s
+```
 
-* Configuration
+## Functionalities 
+Currently, there are three main feature sets: 
+1. Parents:
+- Add, edit, delete parents 
+- For each parent:
+    - Add, edit, delete, children
+    - Add, edit, delete a visit request  
+    - See the total number of visits
 
-* Database creation
+2. Visits: 
+- Assign any waiting visits to a physician 
+- See the total number of waiting visits
 
-* Database initialization
+3. Physicians: 
+- Add, edit, delete physicians
+- For each physician:
+    - Mark any waiting visits as finished
+    - See the total number of assigned visits 
 
-* How to run the test suite
+The main page has links to the three pages, each page listing parents, visits, or physicians. 
 
-* Services (job queues, cache servers, search engines, etc.)
+See [this Google doc](https://docs.google.com/document/d/1PWiKseRMuw1i1nqJKRy41lTVCdJrnoMha-o-KMhSHgk/edit?usp=sharing) for screenshots of the above functionalities. 
 
-* Deployment instructions
-
-* ...
+## Future Features
+Below will be added in the future: 
+- Unit Tests and Database Seeding
+- Authentication for each parent, physician, and admin
+- Broadcasts with Turbo Streams for physicians and admins
